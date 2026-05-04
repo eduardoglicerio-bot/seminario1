@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estrutura da Matéria | Apresentação</title>
+
+  <style>
+    :root {
+      --bg: #070b13;
+      --card: #111827;
+      --card2: #172033;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #22d3ee;
+      --accent2: #facc15;
+      --danger: #fb7185;
+      --green: #4ade80;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #172554, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 50px 8%;
+      background: linear-gradient(135deg, #020617, #0f172a, #1e3a8a);
+      border-bottom: 3px solid var(--accent);
+    }
+
+    header h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      margin: 0;
+      color: var(--accent2);
+      text-transform: uppercase;
+    }
+
+    header p {
+      max-width: 900px;
+      font-size: 1.15rem;
+      color: var(--muted);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #020617ee;
+      padding: 12px 8%;
+      border-bottom: 1px solid #334155;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-right: 18px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    section {
+      padding: 45px 8%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: linear-gradient(145deg, var(--card), var(--card2));
+      border: 1px solid #334155;
+      border-radius: 18px;
+      padding: 28px;
+      margin: 24px 0;
+      box-shadow: 0 12px 30px #00000055;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-top: 0;
+    }
+
+    h3 { color: var(--accent2); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #0f766e;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .formula {
+      background: #020617;
+      border-left: 5px solid var(--accent2);
+      padding: 18px;
+      margin: 18px 0;
+      font-size: 1.25rem;
+      overflow-x: auto;
+      border-radius: 10px;
+    }
+
+    ul { padding-left: 22px; }
+
+    li { margin-bottom: 8px; }
+
+    .highlight {
+      color: var(--accent2);
+      font-weight: bold;
+    }
+
+    .timeline {
+      border-left: 4px solid var(--accent);
+      padding-left: 22px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      background: #020617;
+      color: var(--muted);
+      border-top: 1px solid #334155;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Estrutura da Matéria</h1>
+  <p>
+    Uma apresentação em nível de mestrado sobre os fundamentos microscópicos da matéria,
+    conectando mecânica quântica, ligações químicas, estrutura cristalina, bandas de energia
+    e aplicações em engenharia elétrica, materiais, semicondutores e plasma.
+  </p>
+  <p><strong>Eduardo Glicerio</strong> — Mestrado em Engenharia Elétrica | UFES</p>
+</header>
+
+<nav>
+  <a href="#visao">Visão Geral</a>
+  <a href="#quantica">Modelo Quântico</a>
+  <a href="#ligacoes">Ligações</a>
+  <a href="#solidos">Sólidos</a>
+  <a href="#bandas">Bandas</a>
+  <a href="#aplicacoes">Aplicações</a>
+  <a href="#conclusao">Conclusão</a>
+</nav>
+
+<section id="visao">
+  <div class="card">
+    <h2>1. Visão geral</h2>
+    <p>
+      A matéria pode ser compreendida como uma organização hierárquica de partículas,
+      campos e interações. Suas propriedades macroscópicas surgem de fenômenos microscópicos.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Escala subatômica</h3>
+        <p>Prótons, nêutrons, elétrons e interações fundamentais.</p>
+      </div>
+
+      <div class="card">
+        <h3>Escala atômica</h3>
+        <p>Estados eletrônicos, orbitais, níveis de energia e quantização.</p>
+      </div>
+
+      <div class="card">
+        <h3>Escala macroscópica</h3>
+        <p>Condutividade, magnetismo, rigidez, permissividade e comportamento térmico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quantica">
+  <div class="card">
+    <h2>2. Modelo quântico da matéria</h2>
+    <p>
+      No modelo moderno, o elétron não é descrito como uma partícula em órbita clássica,
+      mas por uma função de onda associada a probabilidades de localização e energia.
+    </p>
+
+    <div class="formula">
+      Ĥψ = Eψ
+    </div>
+
+    <p>
+      A equação de Schrödinger independente do tempo permite determinar os estados
+      estacionários possíveis de um sistema quântico.
+    </p>
+
+    <ul>
+      <li><span class="highlight">Ĥ</span>: operador Hamiltoniano</li>
+      <li><span class="highlight">ψ</span>: função de onda</li>
+      <li><span class="highlight">E</span>: energia associada ao estado quântico</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Níveis de energia</h3>
+    <p>
+      A quantização da energia explica espectros atômicos, transições eletrônicas,
+      emissão e absorção de radiação.
+    </p>
+
+    <div class="formula">
+      ΔE = hν
+    </div>
+
+    <p>
+      Essa relação conecta a estrutura eletrônica da matéria com fenômenos ópticos,
+      espectroscópicos e eletrônicos.
+    </p>
+  </div>
+</section>
+
+<section id="ligacoes">
+  <div class="card">
+    <h2>3. Ligações químicas e organização da matéria</h2>
+    <p>
+      As ligações químicas determinam a forma como os átomos se organizam e, como consequência,
+      influenciam diretamente as propriedades dos materiais.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Ligação iônica</h3>
+        <p>Transferência de elétrons e formação de íons. Forte interação eletrostática.</p>
+      </div>
+
+      <div class="card">
+        <h3>Ligação covalente</h3>
+        <p>Compartilhamento de elétrons. Fundamental em moléculas e semicondutores.</p>
+      </div>
+
+      <div class="card">
+        <h3>Ligação metálica</h3>
+        <p>Elétrons deslocalizados. Explica alta condutividade elétrica e térmica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solidos">
+  <div class="card">
+    <h2>4. Estrutura dos sólidos</h2>
+    <p>
+      Em sólidos cristalinos, os átomos se organizam em padrões periódicos. Essa periodicidade
+      é essencial para compreender propriedades elétricas, ópticas e mecânicas.
+    </p>
+
+    <div class="timeline">
+      <h3>Conceitos principais</h3>
+      <p><strong>Rede cristalina:</strong> arranjo periódico de pontos no espaço.</p>
+      <p><strong>Célula unitária:</strong> menor unidade que reproduz o cristal por translação.</p>
+      <p><strong>Defeitos cristalinos:</strong> vacâncias, discordâncias e impurezas que alteram propriedades.</p>
+    </div>
+  </div>
+</section>
+
+<section id="bandas">
+  <div class="card">
+    <h2>5. Bandas de energia</h2>
+    <p>
+      Em materiais sólidos, a interação entre muitos átomos próximos transforma níveis discretos
+      de energia em bandas permitidas e regiões proibidas.
+    </p>
+
+    <div class="formula">
+      Eg = Ec − Ev
+    </div>
+
+    <p>
+      O valor do gap de energia define se um material se comporta como condutor,
+      semicondutor ou isolante.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Condutores</h3>
+        <p>Bandas parcialmente preenchidas ou sobrepostas. Alta mobilidade eletrônica.</p>
+      </div>
+
+      <div class="card">
+        <h3>Semicondutores</h3>
+        <p>Gap moderado. Propriedades controladas por temperatura e dopagem.</p>
+      </div>
+
+      <div class="card">
+        <h3>Isolantes</h3>
+        <p>Gap elevado. Baixa condução elétrica em condições normais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="aplicacoes">
+  <div class="card">
+    <h2>6. Aplicações em engenharia e pesquisa</h2>
+
+    <p>
+      A estrutura da matéria é a base para várias áreas modernas da engenharia elétrica
+      e da física aplicada.
+    </p>
+
+    <span class="tag">Semicondutores</span>
+    <span class="tag">Plasmas</span>
+    <span class="tag">Materiais dielétricos</span>
+    <span class="tag">Sensores</span>
+    <span class="tag">Nanotecnologia</span>
+    <span class="tag">Energia</span>
+
+    <div class="card">
+      <h3>Conexão com plasma</h3>
+      <p>
+        Em plasmas, a matéria passa a conter partículas carregadas livres,
+        permitindo fenômenos como ionização, recombinação, excitação eletrônica
+        e formação de espécies reativas.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Conexão com telecomunicações</h3>
+      <p>
+        Propriedades materiais como permissividade, condutividade e perdas dielétricas
+        influenciam diretamente propagação de ondas, antenas, guias e dispositivos eletrônicos.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="conclusao">
+  <div class="card">
+    <h2>7. Conclusão</h2>
+    <p>
+      Compreender a estrutura da matéria significa entender como propriedades observáveis
+      surgem de interações microscópicas.
+    </p>
+
+    <ul>
+      <li>A matéria possui organização em múltiplas escalas.</li>
+      <li>A mecânica quântica explica estados eletrônicos e níveis de energia.</li>
+      <li>As ligações químicas determinam estrutura e propriedades.</li>
+      <li>As bandas de energia explicam o comportamento elétrico dos materiais.</li>
+      <li>Aplicações vão de semicondutores a plasma e telecomunicações.</li>
+    </ul>
+
+    <h3>Mensagem final</h3>
+    <p class="highlight">
+      Quem entende a estrutura da matéria entende a base física da engenharia moderna.
+    </p>
+  </div>
+</section>
+
+<footer>
+  Página HTML preparada para apresentação acadêmica — Estrutura da Matéria | Eduardo Glicerio
+</footer>
+
+</body>
+</html>
