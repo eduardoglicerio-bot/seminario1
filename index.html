@@ -1,376 +1,1405 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estrutura da Matéria | Apresentação</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrutura da Matéria | Seminário de Mestrado · Eduardo Glicerio</title>
 
-  <style>
-    :root {
-      --bg: #070b13;
-      --card: #111827;
-      --card2: #172033;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --accent: #22d3ee;
-      --accent2: #facc15;
-      --danger: #fb7185;
-      --green: #4ade80;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700;900&family=DM+Mono:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    * { box-sizing: border-box; }
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    tags: 'ams'
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #172554, var(--bg));
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 50px 8%;
-      background: linear-gradient(135deg, #020617, #0f172a, #1e3a8a);
-      border-bottom: 3px solid var(--accent);
-    }
-
-    header h1 {
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      margin: 0;
-      color: var(--accent2);
-      text-transform: uppercase;
-    }
-
-    header p {
-      max-width: 900px;
-      font-size: 1.15rem;
-      color: var(--muted);
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #020617ee;
-      padding: 12px 8%;
-      border-bottom: 1px solid #334155;
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      margin-right: 18px;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
-
-    nav a:hover { color: var(--accent); }
-
-    section {
-      padding: 45px 8%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .card {
-      background: linear-gradient(145deg, var(--card), var(--card2));
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 28px;
-      margin: 24px 0;
-      box-shadow: 0 12px 30px #00000055;
-    }
-
-    h2 {
-      color: var(--accent);
-      font-size: 2rem;
-      margin-top: 0;
-    }
-
-    h3 { color: var(--accent2); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #0f766e;
-      padding: 6px 12px;
-      border-radius: 999px;
-      margin: 5px;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-
-    .formula {
-      background: #020617;
-      border-left: 5px solid var(--accent2);
-      padding: 18px;
-      margin: 18px 0;
-      font-size: 1.25rem;
-      overflow-x: auto;
-      border-radius: 10px;
-    }
-
-    ul { padding-left: 22px; }
-
-    li { margin-bottom: 8px; }
-
-    .highlight {
-      color: var(--accent2);
-      font-weight: bold;
-    }
-
-    .timeline {
-      border-left: 4px solid var(--accent);
-      padding-left: 22px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 35px;
-      background: #020617;
-      color: var(--muted);
-      border-top: 1px solid #334155;
-    }
-  </style>
+<style>
+:root{
+  --bg:#04080f;
+  --bg2:#09101c;
+  --bg3:#0f1826;
+  --line:rgba(80,145,255,.13);
+  --line2:rgba(80,145,255,.32);
+  --blue:#5090ff;
+  --violet:#9d78ff;
+  --teal:#2dcfbf;
+  --gold:#f0c040;
+  --red:#ff6363;
+  --green:#3dd68c;
+  --text:#d7e3f7;
+  --muted:#6c7fa6;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Jost', Arial, sans-serif;
+  --mono:'DM Mono', monospace;
+  --topH:60px;
+  --navH:40px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.78;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(rgba(80,145,255,.055) 1px,transparent 1px),
+    linear-gradient(rgba(80,145,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(80,145,255,.025) 1px,transparent 1px);
+  background-size:42px 42px,84px 84px,84px 84px;
+}
+#topbar{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:var(--topH);display:flex;align-items:center;gap:14px;
+  padding:0 24px;background:rgba(4,8,15,.96);
+  backdrop-filter:blur(22px);border-bottom:1px solid var(--line);
+}
+.av{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:#fff;font-family:var(--serif);font-size:18px;font-weight:900;
+  border:2px solid rgba(80,145,255,.45);position:relative;
+}
+.av::after{
+  content:"";position:absolute;inset:-5px;border-radius:50%;
+  border:1px solid rgba(80,145,255,.3);animation:pulse 2.7s infinite ease-in-out;
+}
+@keyframes pulse{50%{transform:scale(1.12);opacity:1}0%,100%{transform:scale(1);opacity:.45}}
+.av-info{display:flex;flex-direction:column;line-height:1.25;min-width:210px}
+.av-name{font-weight:600;color:#fff;font-size:13px}
+.av-role{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.vsep{width:1px;height:30px;background:var(--line)}
+#timer-group{display:flex;align-items:center;gap:10px}
+#clk-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+#clk-digital{font-family:var(--mono);font-size:25px;color:var(--blue);min-width:80px;text-align:center}
+#clk-canvas{border-radius:50%;border:1px solid rgba(80,145,255,.36);background:radial-gradient(circle at 35% 30%,#10203b,#030810);box-shadow:0 0 18px rgba(80,145,255,.14)}
+.tbtn,.snbtn{
+  background:transparent;border:1px solid var(--line);color:var(--muted);
+  border-radius:3px;cursor:pointer;transition:.2s;font-family:var(--mono);
+}
+.tbtn{font-size:10px;padding:5px 12px;letter-spacing:.06em}
+.tbtn:hover,.snbtn:hover{border-color:var(--blue);color:var(--blue)}
+.tbtn.running{border-color:var(--red);color:var(--red)}
+.snav{margin-left:auto;display:flex;align-items:center;gap:7px}
+.snbtn{width:28px;height:28px;font-size:15px;display:flex;align-items:center;justify-content:center}
+#slide-ctr{font-family:var(--mono);font-size:10px;color:var(--muted);min-width:48px;text-align:center}
+#chapnav{
+  position:fixed;top:var(--topH);left:0;right:0;height:var(--navH);z-index:800;
+  display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;
+  background:rgba(4,8,15,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
+}
+#chapnav::-webkit-scrollbar{display:none}
+#chapnav a{
+  display:flex;align-items:center;white-space:nowrap;
+  padding:0 15px;text-decoration:none;color:var(--muted);
+  font-family:var(--mono);font-size:9.2px;letter-spacing:.09em;text-transform:uppercase;
+  border-bottom:2px solid transparent;transition:.22s;
+}
+#chapnav a:hover,#chapnav a.act{color:var(--blue);border-bottom-color:var(--blue)}
+.sec{
+  min-height:100vh;max-width:1280px;margin:0 auto;position:relative;z-index:1;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--topH) + var(--navH) + 72px) 9vw 92px;
+}
+.sec + .sec{border-top:1px solid var(--line)}
+#s-hero{
+  background:
+    radial-gradient(ellipse 64% 56% at 76% 42%,rgba(80,145,255,.1),transparent 70%),
+    radial-gradient(ellipse 42% 38% at 12% 78%,rgba(157,120,255,.08),transparent 62%);
+}
+.chip{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;
+  font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:.16em;text-transform:uppercase;
+}
+.chip::before{content:"";width:24px;height:1px;background:var(--blue)}
+.sec-title{
+  font-family:var(--serif);font-size:clamp(42px,5.8vw,82px);
+  font-weight:900;line-height:1.04;color:#fff;margin-bottom:16px;letter-spacing:-.015em;
+}
+.sec-title em{
+  font-style:italic;background:linear-gradient(118deg,var(--blue),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.sec-lead{font-size:16.5px;color:var(--muted);max-width:780px;line-height:1.9;margin-bottom:40px;font-weight:300}
+.pcard{
+  display:inline-flex;align-items:center;gap:16px;width:fit-content;
+  padding:16px 22px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;margin-bottom:44px;
+}
+.pcard-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue),var(--violet));font-family:var(--serif);font-size:22px;font-weight:900;color:#fff}
+.pcard-name{font-weight:600;color:#fff}
+.pcard-role,.pcard-inst{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.pcard-inst{color:var(--blue)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.hstat{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:20px 18px}
+.hstat-n{display:block;font-family:var(--mono);font-size:22px;color:var(--blue);margin-bottom:5px}
+.hstat-l{font-size:11px;color:var(--muted);line-height:1.45}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.g2l{display:grid;grid-template-columns:1.35fr 1fr;gap:42px}
+.g2r{display:grid;grid-template-columns:1fr 1.35fr;gap:42px}
+.card{
+  background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:26px;
+  transition:border-color .25s,transform .2s;
+}
+.card:hover{border-color:var(--line2);transform:translateY(-2px)}
+.card-tag{display:block;font-family:var(--mono);font-size:9.5px;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;margin-bottom:11px}
+.card-icon{font-size:25px;margin-bottom:12px;display:block}
+.card h3{font-family:var(--serif);font-size:21px;font-weight:700;color:#fff;margin-bottom:9px;line-height:1.25}
+.card p{font-size:13.5px;color:var(--muted);line-height:1.82}
+.card ul{margin-top:10px;list-style:none;display:flex;flex-direction:column;gap:7px}
+.card ul li{font-size:13px;color:var(--muted);display:flex;gap:8px;line-height:1.65}
+.card ul li::before{content:"·";color:var(--blue);font-weight:900}
+.eq-block{
+  background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--blue);
+  border-radius:0 8px 8px 0;padding:20px 26px;margin:16px 0;
+}
+.eq-block.violet{border-left-color:var(--violet)}
+.eq-block.gold{border-left-color:var(--gold)}
+.eq-block.teal{border-left-color:var(--teal)}
+.eq-block.green{border-left-color:var(--green)}
+.eq-label{
+  font-family:var(--mono);font-size:9.5px;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px;
+}
+.eq-block.violet .eq-label{color:var(--violet)}
+.eq-block.gold .eq-label{color:var(--gold)}
+.eq-block.teal .eq-label{color:var(--teal)}
+.eq-block.green .eq-label{color:var(--green)}
+.eq-desc{font-size:12.5px;color:var(--muted);line-height:1.82;margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.MathJax{color:#eef4ff!important;font-size:1.05em!important}
+mjx-container{overflow-x:auto;padding:3px 0}
+.kl{list-style:none;display:flex;flex-direction:column;gap:13px}
+.kl li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted);line-height:1.78}
+.kl li::before{content:"▸";color:var(--blue);font-family:var(--mono);margin-top:2px}
+.kl li strong{color:var(--text);font-weight:500}
+.callout,.emerge-box{
+  border:1px solid rgba(80,145,255,.2);border-radius:10px;padding:26px 30px;margin:16px 0;
+  background:linear-gradient(135deg,rgba(80,145,255,.07),rgba(157,120,255,.055));
+}
+.callout.gold{border-color:rgba(240,192,64,.22);background:rgba(240,192,64,.05)}
+.callout.green{border-color:rgba(61,214,140,.22);background:rgba(61,214,140,.05)}
+.callout h4,.emerge-box h4{font-family:var(--serif);font-size:20px;color:#fff;margin-bottom:9px;font-weight:700}
+.callout p,.emerge-box p{font-size:13.5px;color:var(--muted);line-height:1.82}
+.qblock{border-left:3px solid var(--gold);padding:18px 26px;background:rgba(240,192,64,.04);border-radius:0 8px 8px 0;margin:22px 0}
+.qblock blockquote{font-family:var(--serif);font-size:21px;font-style:italic;color:var(--text);line-height:1.55}
+.qblock cite{display:block;font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:9px}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:18px 0;background:rgba(9,16,28,.4)}
+.dtable th{font-family:var(--mono);font-size:9.5px;text-align:left;color:var(--blue);padding:10px 14px;border-bottom:1px solid var(--line);letter-spacing:.1em;text-transform:uppercase}
+.dtable td{padding:10px 14px;border-bottom:1px solid rgba(80,145,255,.06);color:var(--muted);vertical-align:top}
+.dtable td:first-child{color:var(--text);font-weight:500}
+.fig{
+  background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;
+}
+.fig svg{width:100%;height:auto;display:block}
+.figcap{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:10px;line-height:1.55}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{font-family:var(--mono);font-size:10px;color:var(--blue);border:1px solid rgba(80,145,255,.28);padding:5px 13px;border-radius:99px;background:rgba(80,145,255,.06)}
+.fn{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:16px;padding-left:12px;border-left:2px solid #1e2d48;line-height:1.65}
+.source-list a{color:var(--blue);text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.final-card{text-align:center;padding:56px 40px;margin-top:44px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(160deg,rgba(80,145,255,.05),rgba(157,120,255,.05));position:relative;overflow:hidden}
+.final-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--violet),var(--teal),var(--gold))}
+.final-card h3{font-family:var(--serif);font-size:clamp(23px,3.2vw,38px);font-weight:900;color:#fff;line-height:1.3;margin-bottom:14px}
+.final-card p{font-size:14px;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.88}
+.rv,.rv2,.rv3{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv2{transition-delay:.14s}.rv3{transition-delay:.28s}
+.rv.in,.rv2.in,.rv3.in{opacity:1;transform:none}
+footer{text-align:center;padding:48px 24px 72px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+footer span{color:var(--blue)}
+@media(max-width:900px){
+  .g2,.g3,.g2l,.g2r,.hero-stats{grid-template-columns:1fr}
+  .av-info{min-width:auto}
+}
+@media(max-width:650px){
+  #timer-group{display:none}
+  .sec{padding-left:5vw;padding-right:5vw}
+  .hero-stats{grid-template-columns:1fr 1fr}
+}
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>Estrutura da Matéria</h1>
-  <p>
-    Uma apresentação em nível de mestrado sobre os fundamentos microscópicos da matéria,
-    conectando mecânica quântica, ligações químicas, estrutura cristalina, bandas de energia
-    e aplicações em engenharia elétrica, materiais, semicondutores e plasma.
-  </p>
-  <p><strong>Eduardo Glicerio</strong> — Mestrado em Engenharia Elétrica | UFES</p>
-</header>
+<div id="topbar">
+  <div class="av">EG</div>
+  <div class="av-info">
+    <span class="av-name">Eduardo Glicerio</span>
+    <span class="av-role">Seminário · Estrutura da Matéria</span>
+  </div>
+  <div class="vsep"></div>
+  <div id="timer-group">
+    <span id="clk-label">tempo</span>
+    <canvas id="clk-canvas" width="50" height="50"></canvas>
+    <span id="clk-digital">45:00</span>
+    <button class="tbtn" id="btn-toggle" onclick="toggleTimer()">▶ Iniciar</button>
+    <button class="tbtn" onclick="resetTimer()">↺ Reset</button>
+  </div>
+  <div class="snav">
+    <button class="snbtn" onclick="goSlide(-1)">‹</button>
+    <span id="slide-ctr">1 / 12</span>
+    <button class="snbtn" onclick="goSlide(1)">›</button>
+  </div>
+</div>
 
-<nav>
-  <a href="#visao">Visão Geral</a>
-  <a href="#quantica">Modelo Quântico</a>
-  <a href="#ligacoes">Ligações</a>
-  <a href="#solidos">Sólidos</a>
-  <a href="#bandas">Bandas</a>
-  <a href="#aplicacoes">Aplicações</a>
-  <a href="#conclusao">Conclusão</a>
+<nav id="chapnav">
+  <a href="#s-hero">① Início</a>
+  <a href="#s-def">② Definição</a>
+  <a href="#s-dualidade">③ Dualidade</a>
+  <a href="#s-hidrogenio">④ Hidrogênio</a>
+  <a href="#s-sommerfeld">⑤ Bohr–Sommerfeld</a>
+  <a href="#s-sch">⑥ Schrödinger</a>
+  <a href="#s-orbitais">⑦ Orbitais</a>
+  <a href="#s-muitos">⑧ Muitos elétrons</a>
+  <a href="#s-hf">⑨ Hartree-Fock</a>
+  <a href="#s-ligacoes">⑩ Ligações</a>
+  <a href="#s-materiais">⑪ Materiais</a>
+  <a href="#s-cronologia">⑫ Cronologia</a>
+  <a href="#s-final">⑬ Síntese</a>
+  <a href="#s-ref">⑭ Referências</a>
 </nav>
 
-<section id="visao">
-  <div class="card">
-    <h2>1. Visão geral</h2>
-    <p>
-      A matéria pode ser compreendida como uma organização hierárquica de partículas,
-      campos e interações. Suas propriedades macroscópicas surgem de fenômenos microscópicos.
-    </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Escala subatômica</h3>
-        <p>Prótons, nêutrons, elétrons e interações fundamentais.</p>
+<section class="sec" id="s-hero">
+  <div class="chip rv">Seminário de Aula · Mestrado</div>
+  <h1 class="sec-title rv">Estrutura<br><em>da Matéria</em></h1>
+  <p class="sec-lead rv2">
+    Da dualidade onda-partícula à estrutura eletrônica: como a matéria deixa de ser descrita por trajetórias clássicas
+    e passa a ser compreendida por funções de onda, orbitais, aproximações e propriedades observáveis.
+  </p>
+  <div class="pcard rv2">
+    <div class="pcard-av">EG</div>
+    <div>
+      <div class="pcard-name">Eduardo Glicerio</div>
+      <div class="pcard-role">Mestrado em Engenharia Elétrica</div>
+      <div class="pcard-inst">Universidade Federal do Espírito Santo</div>
+    </div>
+  </div>
+  <div class="hero-stats rv3">
+    <div class="hstat"><span class="hstat-n"></span><div class="hstat-l"></div></div>
+    <div class="hstat"><span class="hstat-n"/span><div class="hstat-l"></div></div>
+    <div class="hstat"><span class="hstat-n"/span><div class="hstat-l"></div></div>
+    <div class="hstat"><span class="hstat-n"></span><div class="hstat-l"></div></div>
+  </div>
+</section>
+
+
+<section class="sec" id="s-def">
+  <div class="chip rv">01 — Definição e caminho</div>
+  <h2 class="sec-title rv">O que é <em>estrutura da matéria?</em></h2>
+  <p class="sec-lead rv2">
+    Estrutura da matéria é o estudo de como a matéria se organiza em diferentes escalas: partículas,
+    átomos, moléculas, sólidos e materiais. A questão central é entender como a organização microscópica
+    determina propriedades observáveis.
+  </p>
+
+  <div class="g2 rv">
+    <div>
+      <div class="callout">
+        <h4>Pergunta-guia do seminário</h4>
+        <p>
+          Como descrever a matéria a partir de princípios fundamentais e, ao mesmo tempo,
+          explicar propriedades reais como espectros, ligações químicas, condutividade e estrutura eletrônica?
+        </p>
       </div>
 
-      <div class="card">
-        <h3>Escala atômica</h3>
-        <p>Estados eletrônicos, orbitais, níveis de energia e quantização.</p>
-      </div>
+      <table class="dtable">
+        <tr><th>Escala</th><th>Descrição</th><th>Exemplo</th></tr>
+        <tr><td>Subatômica</td><td>Partículas e interações</td><td>elétrons, prótons, nêutrons</td></tr>
+        <tr><td>Atômica</td><td>Níveis de energia e orbitais</td><td>átomo de hidrogênio</td></tr>
+        <tr><td>Molecular</td><td>Ligações e geometria</td><td>H₂O, CO₂, benzeno</td></tr>
+        <tr><td>Sólida</td><td>Rede cristalina e bandas</td><td>silício, metais, isolantes</td></tr>
+      </table>
+    </div>
 
-      <div class="card">
-        <h3>Escala macroscópica</h3>
-        <p>Condutividade, magnetismo, rigidez, permissividade e comportamento térmico.</p>
+    <div class="fig">
+      <svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0" x2="1">
+            <stop offset="0" stop-color="#5090ff"/><stop offset="1" stop-color="#9d78ff"/>
+          </linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="760" height="460" fill="#07101c"/>
+        <line x1="70" y1="230" x2="690" y2="230" stroke="url(#grad1)" stroke-width="4"/>
+        <g fill="#d7e3f7" font-family="DM Mono,monospace" font-size="18" text-anchor="middle">
+          <circle cx="90" cy="230" r="32" fill="#09182c" stroke="#5090ff" stroke-width="3"/>
+          <text x="90" y="236">e⁻</text>
+          <circle cx="250" cy="230" r="48" fill="#09182c" stroke="#2dcfbf" stroke-width="3"/>
+          <text x="250" y="236">Átomo</text>
+          <circle cx="430" cy="230" r="58" fill="#09182c" stroke="#9d78ff" stroke-width="3"/>
+          <text x="430" y="236">Molécula</text>
+          <rect x="575" y="180" width="125" height="100" rx="18" fill="#09182c" stroke="#f0c040" stroke-width="3"/>
+          <text x="638" y="236">Material</text>
+        </g>
+        <g fill="#6c7fa6" font-family="DM Mono,monospace" font-size="15" text-anchor="middle">
+          <text x="90" y="300">subatômico</text>
+          <text x="250" y="315">níveis</text>
+          <text x="430" y="325">ligações</text>
+          <text x="638" y="315">propriedades</text>
+        </g>
+        <text x="380" y="70" fill="#fff" font-family="Cormorant Garamond,serif" font-size="34" text-anchor="middle" font-weight="700">
+          A estrutura surge em camadas
+        </text>
+      </svg>
+      <div class="figcap">
+        Fonte conceitual: Encyclopaedia Britannica, “Matter” e “Atom”; IUPAC Gold Book, definições de átomo, molécula e ligação química.
       </div>
     </div>
   </div>
 </section>
 
-<section id="quantica">
-  <div class="card">
-    <h2>2. Modelo quântico da matéria</h2>
-    <p>
-      No modelo moderno, o elétron não é descrito como uma partícula em órbita clássica,
-      mas por uma função de onda associada a probabilidades de localização e energia.
-    </p>
 
-    <div class="formula">
-      Ĥψ = Eψ
+<section class="sec" id="s-dualidade">
+  <div class="chip rv">02 — Por que a física clássica falha?</div>
+  <h2 class="sec-title rv">Dualidade <em>onda-partícula</em></h2>
+  <p class="sec-lead rv2">
+    No mundo microscópico, elétrons e fótons apresentam comportamento corpuscular e ondulatório.
+    Essa dualidade exige uma descrição estatística, não uma trajetória clássica bem definida.
+  </p>
+
+  <div class="g2 rv">
+    <div>
+      <div class="eq-block">
+        <div class="eq-label">Relação de Planck-Einstein</div>
+        <div>$$E = h\nu$$</div>
+        <div class="eq-desc">A energia da radiação é quantizada. Essa relação explica o efeito fotoelétrico e liga energia à frequência.</div>
+      </div>
+      <div class="eq-block violet">
+        <div class="eq-label">Comprimento de onda de de Broglie</div>
+        <div>$$\lambda = \frac{h}{p}$$</div>
+        <div class="eq-desc">Toda partícula com momento $p$ possui comprimento de onda associado. Para elétrons, esse efeito é diretamente observado em difração.</div>
+      </div>
+      <div class="eq-block gold">
+        <div class="eq-label">Incerteza de Heisenberg</div>
+        <div>$$\Delta x \, \Delta p \geq \frac{\hbar}{2}$$</div>
+        <div class="eq-desc">Não é uma limitação do aparelho: é uma limitação fundamental. A matéria microscópica não permite posição e momento simultaneamente definidos.</div>
+      </div>
     </div>
 
-    <p>
-      A equação de Schrödinger independente do tempo permite determinar os estados
-      estacionários possíveis de um sistema quântico.
-    </p>
-
-    <ul>
-      <li><span class="highlight">Ĥ</span>: operador Hamiltoniano</li>
-      <li><span class="highlight">ψ</span>: função de onda</li>
-      <li><span class="highlight">E</span>: energia associada ao estado quântico</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>Níveis de energia</h3>
-    <p>
-      A quantização da energia explica espectros atômicos, transições eletrônicas,
-      emissão e absorção de radiação.
-    </p>
-
-    <div class="formula">
-      ΔE = hν
-    </div>
-
-    <p>
-      Essa relação conecta a estrutura eletrônica da matéria com fenômenos ópticos,
-      espectroscópicos e eletrônicos.
-    </p>
-  </div>
-</section>
-
-<section id="ligacoes">
-  <div class="card">
-    <h2>3. Ligações químicas e organização da matéria</h2>
-    <p>
-      As ligações químicas determinam a forma como os átomos se organizam e, como consequência,
-      influenciam diretamente as propriedades dos materiais.
-    </p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Ligação iônica</h3>
-        <p>Transferência de elétrons e formação de íons. Forte interação eletrostática.</p>
-      </div>
-
-      <div class="card">
-        <h3>Ligação covalente</h3>
-        <p>Compartilhamento de elétrons. Fundamental em moléculas e semicondutores.</p>
-      </div>
-
-      <div class="card">
-        <h3>Ligação metálica</h3>
-        <p>Elétrons deslocalizados. Explica alta condutividade elétrica e térmica.</p>
+    <div class="fig">
+      <svg viewBox="0 0 760 510" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="510" fill="#07101c"/>
+        <text x="380" y="52" fill="#fff" font-family="Cormorant Garamond,serif" font-size="33" text-anchor="middle" font-weight="700">Interferência de elétrons: evidência ondulatória</text>
+        <line x1="120" y1="90" x2="120" y2="430" stroke="#5090ff" stroke-width="2"/>
+        <rect x="330" y="110" width="16" height="290" fill="#9d78ff"/>
+        <rect x="330" y="190" width="16" height="32" fill="#07101c"/>
+        <rect x="330" y="292" width="16" height="32" fill="#07101c"/>
+        <line x1="650" y1="90" x2="650" y2="430" stroke="#f0c040" stroke-width="3"/>
+        <g stroke="#2dcfbf" stroke-width="2" fill="none" opacity=".8">
+          <path d="M140 255 C210 205,260 205,330 205"/>
+          <path d="M140 255 C210 305,260 305,330 305"/>
+          <path d="M346 205 C450 120,540 120,650 150"/>
+          <path d="M346 205 C450 210,540 210,650 230"/>
+          <path d="M346 205 C450 300,540 300,650 315"/>
+          <path d="M346 305 C450 190,540 190,650 230"/>
+          <path d="M346 305 C450 270,540 270,650 315"/>
+          <path d="M346 305 C450 360,540 360,650 395"/>
+        </g>
+        <g fill="#f0c040" opacity=".9">
+          <circle cx="650" cy="150" r="7"/><circle cx="650" cy="230" r="10"/><circle cx="650" cy="315" r="8"/><circle cx="650" cy="395" r="5"/>
+        </g>
+        <g font-family="DM Mono,monospace" fill="#6c7fa6" font-size="15" text-anchor="middle">
+          <text x="120" y="455">fonte</text><text x="338" y="430">duas fendas</text><text x="650" y="455">tela</text>
+        </g>
+      </svg>
+      <div class="figcap">
+        Fonte conceitual: Davisson–Germer (1927), de Broglie (1924), Griffiths & Schroeter, <em>Introduction to Quantum Mechanics</em>.
       </div>
     </div>
   </div>
 </section>
 
-<section id="solidos">
-  <div class="card">
-    <h2>4. Estrutura dos sólidos</h2>
-    <p>
-      Em sólidos cristalinos, os átomos se organizam em padrões periódicos. Essa periodicidade
-      é essencial para compreender propriedades elétricas, ópticas e mecânicas.
-    </p>
 
-    <div class="timeline">
-      <h3>Conceitos principais</h3>
-      <p><strong>Rede cristalina:</strong> arranjo periódico de pontos no espaço.</p>
-      <p><strong>Célula unitária:</strong> menor unidade que reproduz o cristal por translação.</p>
-      <p><strong>Defeitos cristalinos:</strong> vacâncias, discordâncias e impurezas que alteram propriedades.</p>
+<section class="sec" id="s-hidrogenio">
+  <div class="chip rv">03 — Primeiro sistema exatamente resolvível</div>
+  <h2 class="sec-title rv">Átomo de <em>Hidrogênio</em></h2>
+  <p class="sec-lead rv2">
+    O hidrogênio é o laboratório teórico fundamental: um próton e um elétron. Para esse sistema,
+    a equação de Schrödinger possui solução analítica e revela níveis discretos de energia.
+  </p>
+
+  <div class="g2 rv">
+    <div>
+      <div class="eq-block">
+        <div class="eq-label">Potencial de Coulomb elétron-próton</div>
+        <div>$$V(r)=-\frac{e^2}{4\pi\varepsilon_0 r}$$</div>
+        <div class="eq-desc">A força atrativa entre núcleo e elétron define o potencial central do átomo de hidrogênio.</div>
+      </div>
+      <div class="eq-block violet">
+        <div class="eq-label">Energias permitidas</div>
+        <div>$$E_n=-\frac{13{,}6}{n^2}\,\text{eV}\qquad n=1,2,3,\ldots$$</div>
+        <div class="eq-desc">
+          A energia é quantizada. Transições entre níveis explicam espectros atômicos.
+        </div>
+      </div>
+      <div class="eq-block gold">
+        <div class="eq-label">Transições espectrais</div>
+        <div>$$\Delta E = h\nu = E_f - E_i$$</div>
+        <div class="eq-desc">
+          Quando o elétron muda de nível, absorve ou emite fóton com frequência definida.
+        </div>
+      </div>
+    </div>
+
+    <div class="fig">
+      <svg viewBox="0 0 760 500" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="500" fill="#07101c"/>
+        <text x="380" y="50" text-anchor="middle" fill="#fff" font-family="Cormorant Garamond,serif" font-size="34" font-weight="700">Níveis de energia do hidrogênio</text>
+        <g stroke="#5090ff" stroke-width="3">
+          <line x1="160" y1="390" x2="620" y2="390"/><line x1="160" y1="265" x2="620" y2="265"/><line x1="160" y1="215" x2="620" y2="215"/><line x1="160" y1="190" x2="620" y2="190"/><line x1="160" y1="175" x2="620" y2="175"/>
+        </g>
+        <g fill="#d7e3f7" font-family="DM Mono,monospace" font-size="15">
+          <text x="635" y="394">n=1  -13,6 eV</text>
+          <text x="635" y="269">n=2  -3,40 eV</text>
+          <text x="635" y="219">n=3  -1,51 eV</text>
+          <text x="635" y="194">n=4</text>
+          <text x="635" y="179">n=∞  0 eV</text>
+        </g>
+        <path d="M250 265 L250 390" stroke="#f0c040" stroke-width="4" marker-end="url(#arrow)"/>
+        <path d="M390 215 L390 390" stroke="#9d78ff" stroke-width="4" marker-end="url(#arrow)"/>
+        <path d="M520 190 L520 265" stroke="#2dcfbf" stroke-width="4" marker-end="url(#arrow)"/>
+        <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f0c040"/></marker></defs>
+        <text x="380" y="450" text-anchor="middle" fill="#6c7fa6" font-family="DM Mono,monospace" font-size="14">Transições geram linhas espectrais discretas</text>
+      </svg>
+      <div class="figcap">
+        Fonte conceitual: NIST Atomic Spectra Database; Griffiths & Schroeter; Atkins & de Paula.
+      </div>
     </div>
   </div>
 </section>
 
-<section id="bandas">
-  <div class="card">
-    <h2>5. Bandas de energia</h2>
-    <p>
-      Em materiais sólidos, a interação entre muitos átomos próximos transforma níveis discretos
-      de energia em bandas permitidas e regiões proibidas.
-    </p>
 
-    <div class="formula">
-      Eg = Ec − Ev
+<section class="sec" id="s-sommerfeld">
+  <div class="chip rv">04 — Da Órbita Circular ao Quântico</div>
+  <h2 class="sec-title rv">Modelo de <em>Bohr–Sommerfeld</em></h2>
+  <p class="sec-lead rv2">
+    Antes da mecânica quântica completa, Sommerfeld generalizou o modelo de Bohr
+    introduzindo órbitas elípticas quantizadas — explicando a estrutura fina dos
+    espectros atômicos e preparando o terreno para Schrödinger.
+  </p>
+
+  <div class="g2 rv">
+    <div>
+      <div class="eq-block">
+        <div class="eq-label">Condição de quantização de Sommerfeld (1916)</div>
+        <div>$$\oint p_i \, dq_i = n_i h \qquad n_i = 1, 2, 3, \ldots$$</div>
+        <div class="eq-desc">
+          A integral de ação ao longo de cada coordenada generalizada $q_i$
+          deve ser um múltiplo inteiro de $h$. Para órbitas circulares recupera
+          Bohr; para elípticas, adiciona o número quântico azimutal $\ell$.
+        </div>
+      </div>
+
+      <div class="eq-block violet" style="margin-top:16px">
+        <div class="eq-label">Estrutura fina — correção relativística</div>
+        <div>$$E_{n,\ell} = E_n^{\text{Bohr}}\left[1 + \frac{\alpha^2}{n}\left(\frac{n}{\ell+\tfrac{1}{2}} - \frac{3}{4}\right)\right]$$</div>
+        <div class="eq-desc">
+          $\alpha \approx 1/137$ = constante de estrutura fina.
+          A dependência em $\ell$ explica o desdobramento das linhas espectrais
+          — observado experimentalmente antes de 1913 e inexplicável pelo modelo de Bohr original.
+        </div>
+      </div>
+
+      <div class="tl" style="margin-top:28px">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-yr">Bohr, 1913</div>
+          <div class="tl-name">Órbitas circulares quantizadas</div>
+          <div class="tl-desc">$n$ = 1 número quântico. Explica espectro do hidrogênio mas não a estrutura fina.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--violet)"></div>
+          <div class="tl-yr">Sommerfeld, 1916</div>
+          <div class="tl-name">Órbitas elípticas + relatividade</div>
+          <div class="tl-desc">Adiciona $n_r$ (radial) e $n_\phi$ (azimutal). Dois números quânticos — precursor de $n$ e $\ell$ modernos.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--teal)"></div>
+          <div class="tl-yr">1925–1926</div>
+          <div class="tl-name">Superação pela MQ moderna</div>
+          <div class="tl-desc">Heisenberg e Schrödinger substituem órbitas por orbitais probabilísticos. O modelo de Bohr–Sommerfeld é "old quantum theory".</div>
+        </div>
+      </div>
     </div>
 
-    <p>
-      O valor do gap de energia define se um material se comporta como condutor,
-      semicondutor ou isolante.
-    </p>
+    <div>
+      <!-- Sommerfeld atom animation — integrated with site style -->
+      <div style="display:flex;justify-content:center;align-items:center;padding:20px 0">
+        <div style="position:relative;width:280px;height:280px">
+          <!-- nucleus -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+            width:36px;height:36px;border-radius:50%;
+            background:radial-gradient(circle at 38% 35%,#f0c040,#8b5e00);
+            box-shadow:0 0 22px rgba(240,192,64,.6);z-index:10;
+            display:flex;align-items:center;justify-content:center;
+            font-family:var(--mono);font-size:9px;color:#fff;font-weight:500">Z</div>
+          <!-- elliptical orbits -->
+          <div style="position:absolute;top:50%;left:50%;
+            width:120px;height:72px;margin-left:-60px;margin-top:-36px;
+            border:1.5px solid rgba(90,150,255,.45);border-radius:50%;
+            animation:espin1 6s linear infinite"></div>
+          <div style="position:absolute;top:50%;left:50%;
+            width:196px;height:108px;margin-left:-98px;margin-top:-54px;
+            border:1.5px solid rgba(157,120,255,.35);border-radius:50%;
+            animation:espin2 10s linear infinite reverse"></div>
+          <div style="position:absolute;top:50%;left:50%;
+            width:266px;height:140px;margin-left:-133px;margin-top:-70px;
+            border:1.5px solid rgba(45,207,191,.28);border-radius:50%;
+            animation:espin3 15s linear infinite"></div>
+          <!-- electrons on orbits -->
+          <div style="position:absolute;top:50%;left:50%;
+            width:120px;height:72px;margin-left:-60px;margin-top:-36px;
+            border-radius:50%;animation:espin1 6s linear infinite">
+            <div style="position:absolute;width:11px;height:11px;border-radius:50%;
+              background:#5a96ff;box-shadow:0 0 10px #5a96ff;
+              top:-5.5px;left:50%;transform:translateX(-50%)"></div>
+          </div>
+          <div style="position:absolute;top:50%;left:50%;
+            width:196px;height:108px;margin-left:-98px;margin-top:-54px;
+            border-radius:50%;animation:espin2 10s linear infinite reverse">
+            <div style="position:absolute;width:9px;height:9px;border-radius:50%;
+              background:#a07dff;box-shadow:0 0 9px #a07dff;
+              top:-4.5px;left:50%;transform:translateX(-50%)"></div>
+          </div>
+          <div style="position:absolute;top:50%;left:50%;
+            width:266px;height:140px;margin-left:-133px;margin-top:-70px;
+            border-radius:50%;animation:espin3 15s linear infinite">
+            <div style="position:absolute;width:9px;height:9px;border-radius:50%;
+              background:#2dcfbf;box-shadow:0 0 9px #2dcfbf;
+              top:-4.5px;left:50%;transform:translateX(-50%)"></div>
+          </div>
+        </div>
+      </div>
+      <style>
+        @keyframes espin1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        @keyframes espin2{from{transform:rotate(60deg)}to{transform:rotate(420deg)}}
+        @keyframes espin3{from{transform:rotate(120deg)}to{transform:rotate(480deg)}}
+      </style>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Condutores</h3>
-        <p>Bandas parcialmente preenchidas ou sobrepostas. Alta mobilidade eletrônica.</p>
+      <div class="callout" style="margin-top:16px">
+        <h4>Por que importa para esta sequência?</h4>
+        <p>
+          Bohr–Sommerfeld é a "<em>old quantum theory</em>": bem-sucedida para o hidrogênio,
+          mas incapaz de tratar hélio ou moléculas. Essa limitação <strong style="color:var(--text)">motiva diretamente</strong>
+          a equação de Schrödinger — a próxima seção — e o abandono
+          do conceito de trajetória definida.
+        </p>
       </div>
 
-      <div class="card">
-        <h3>Semicondutores</h3>
-        <p>Gap moderado. Propriedades controladas por temperatura e dopagem.</p>
+      <div class="callout gold" style="margin-top:14px">
+        <h4>Legado de Sommerfeld</h4>
+        <p>
+          Sommerfeld orientou mais alunos que se tornaram Nobel do que qualquer outro físico da história:
+          Heisenberg, Pauli, Debye, Bethe. Seu curso <em>Atombau und Spektrallinien</em> (1919)
+          foi o livro-texto padrão da época.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn rv3">
+    Referências: Sommerfeld, A. <em>Annalen der Physik</em> 51, 1–94 (1916). ·
+    Griffiths, D. <em>Introduction to Quantum Mechanics</em>, cap. 2. ·
+    Jammer, M. <em>The Conceptual Development of Quantum Mechanics</em> (1966).
+  </div>
+</section>
+
+<section class="sec" id="s-sch">
+  <div class="chip rv">05 — A nova descrição microscópica</div>
+  <h2 class="sec-title rv">Equação de <em>Schrödinger</em></h2>
+  <p class="sec-lead rv2">
+    A equação de Schrödinger é a base matemática para descrever elétrons em átomos e moléculas.
+    Ela substitui a ideia de trajetória pela ideia de estado quântico.
+  </p>
+
+  <div class="g2l rv">
+    <div>
+      <div class="eq-block">
+        <div class="eq-label">Forma dependente do tempo</div>
+        <div>$$i\hbar\frac{\partial \Psi(\mathbf{r},t)}{\partial t}=\hat{H}\Psi(\mathbf{r},t)$$</div>
+        <div class="eq-desc">
+          Descreve a evolução temporal do estado quântico. $\Psi$ é a função de onda e $\hat{H}$ é o Hamiltoniano,
+          o operador energia total do sistema.
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Isolantes</h3>
-        <p>Gap elevado. Baixa condução elétrica em condições normais.</p>
+      <div class="eq-block violet">
+        <div class="eq-label">Hamiltoniano de uma partícula em potencial</div>
+        <div>$$\hat{H}= -\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{r})$$</div>
+        <div class="eq-desc">
+          O primeiro termo representa energia cinética; o segundo representa a energia potencial.
+          A forma do potencial determina a estrutura possível do sistema.
+        </div>
+      </div>
+
+      <div class="eq-block teal">
+        <div class="eq-label">Forma estacionária</div>
+        <div>$$\hat{H}\psi_n(\mathbf{r}) = E_n\psi_n(\mathbf{r})$$</div>
+        <div class="eq-desc">
+          Quando o potencial não depende do tempo, o problema vira uma equação de autovalores:
+          as soluções permitidas são estados estacionários com energias quantizadas.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="callout">
+        <h4>Interpretação física</h4>
+        <p>
+          A função de onda não descreve a órbita do elétron. Ela descreve amplitudes de probabilidade.
+          A densidade $|\psi(\mathbf{r})|^2$ indica onde o elétron tem maior chance de ser encontrado.
+        </p>
+      </div>
+      <div class="eq-block gold">
+        <div class="eq-label">Regra de Born</div>
+        <div>$$P(\mathbf{r})\,d^3r = |\psi(\mathbf{r})|^2\,d^3r$$</div>
+        <div class="eq-desc">Essa é a ponte entre a matemática da função de onda e a medida física observável.</div>
+      </div>
+      <div class="qblock">
+        <blockquote>“A função de onda não descreve trajetórias, mas probabilidades associadas ao sistema.”</blockquote>
+        <cite>Frase-chave para o seminário</cite>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn">
+    Fontes: Schrödinger, E. Annalen der Physik (1926); Griffiths & Schroeter, <em>Introduction to Quantum Mechanics</em>, 3ª ed.; Atkins & de Paula, <em>Physical Chemistry</em>.
+  </div>
+</section>
+
+
+<section class="sec" id="s-orbitais">
+  <div class="chip rv">06 — Onde está o elétron?</div>
+  <h2 class="sec-title rv">Orbitais <em>atômicos</em></h2>
+  <p class="sec-lead rv2">
+    O modelo planetário é didático, mas incorreto para a descrição moderna. O elétron não gira em órbitas clássicas:
+    ele ocupa orbitais, que são regiões de maior probabilidade.
+  </p>
+
+  <div class="g2 rv">
+    <div>
+      <table class="dtable">
+        <tr><th>Número quântico</th><th>Significado</th><th>O que determina</th></tr>
+        <tr><td>$n$</td><td>principal</td><td>camada/energia</td></tr>
+        <tr><td>$\ell$</td><td>azimutal</td><td>tipo de orbital: s, p, d, f</td></tr>
+        <tr><td>$m_\ell$</td><td>magnético</td><td>orientação espacial</td></tr>
+        <tr><td>$m_s$</td><td>spin</td><td>estado de spin do elétron</td></tr>
+      </table>
+
+      <div class="eq-block teal">
+        <div class="eq-label">Princípio de exclusão de Pauli</div>
+        <div>$$\psi(\mathbf{r}_1,\mathbf{r}_2)=-\psi(\mathbf{r}_2,\mathbf{r}_1)$$</div>
+        <div class="eq-desc">
+          Para férmions, a função de onda total é antissimétrica. Consequência: dois elétrons não ocupam o mesmo estado quântico.
+        </div>
+      </div>
+
+      <div class="callout green">
+        <h4>Correção conceitual importante</h4>
+        <p>
+          O desenho de elétrons em órbita é apenas representação histórica. Em seminário científico,
+          o correto é falar em densidade eletrônica e orbitais de probabilidade.
+        </p>
+      </div>
+    </div>
+
+    <div class="fig">
+      <svg viewBox="0 0 760 510" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="510" fill="#07101c"/>
+        <text x="380" y="50" fill="#fff" font-family="Cormorant Garamond,serif" font-size="34" text-anchor="middle" font-weight="700">Orbitais: regiões de probabilidade</text>
+        <defs>
+          <radialGradient id="sorb"><stop offset="0" stop-color="#5090ff" stop-opacity=".9"/><stop offset="1" stop-color="#5090ff" stop-opacity="0"/></radialGradient>
+          <radialGradient id="porb"><stop offset="0" stop-color="#9d78ff" stop-opacity=".85"/><stop offset="1" stop-color="#9d78ff" stop-opacity="0"/></radialGradient>
+          <filter id="blur"><feGaussianBlur stdDeviation="2"/></filter>
+        </defs>
+        <circle cx="190" cy="240" r="96" fill="url(#sorb)" filter="url(#blur)"/>
+        <circle cx="190" cy="240" r="5" fill="#f0c040"/>
+        <text x="190" y="390" text-anchor="middle" fill="#d7e3f7" font-family="DM Mono,monospace" font-size="18">orbital s</text>
+        <ellipse cx="475" cy="190" rx="72" ry="115" fill="url(#porb)" transform="rotate(0 475 190)" filter="url(#blur)"/>
+        <ellipse cx="475" cy="305" rx="72" ry="115" fill="url(#porb)" transform="rotate(180 475 305)" filter="url(#blur)"/>
+        <circle cx="475" cy="248" r="5" fill="#f0c040"/>
+        <text x="475" y="390" text-anchor="middle" fill="#d7e3f7" font-family="DM Mono,monospace" font-size="18">orbital p</text>
+        <line x1="95" y1="430" x2="665" y2="430" stroke="#1e2d48"/>
+        <text x="380" y="463" text-anchor="middle" fill="#6c7fa6" font-family="DM Mono,monospace" font-size="13">Não são trajetórias: são distribuições espaciais de |ψ|²</text>
+      </svg>
+      <div class="figcap">
+        Fonte conceitual: IUPAC Gold Book, “atomic orbital”; Atkins & de Paula, <em>Physical Chemistry</em>; Housecroft & Sharpe, <em>Inorganic Chemistry</em>.
       </div>
     </div>
   </div>
 </section>
 
-<section id="aplicacoes">
-  <div class="card">
-    <h2>6. Aplicações em engenharia e pesquisa</h2>
 
-    <p>
-      A estrutura da matéria é a base para várias áreas modernas da engenharia elétrica
-      e da física aplicada.
-    </p>
+<section class="sec" id="s-muitos">
+  <div class="chip rv">07 — O salto para sistemas reais</div>
+  <h2 class="sec-title rv">O problema dos <em>muitos elétrons</em></h2>
+  <p class="sec-lead rv2">
+    O hidrogênio é elegante porque possui um único elétron. Mas a matéria real envolve muitos elétrons interagindo,
+    e é aí que a solução exata deixa de ser viável.
+  </p>
 
-    <span class="tag">Semicondutores</span>
-    <span class="tag">Plasmas</span>
-    <span class="tag">Materiais dielétricos</span>
-    <span class="tag">Sensores</span>
-    <span class="tag">Nanotecnologia</span>
-    <span class="tag">Energia</span>
+  <div class="g2 rv">
+    <div>
+      <div class="eq-block">
+        <div class="eq-label">Hamiltoniano eletrônico de muitos corpos</div>
+        <div>
+        $$
+\hat{H}=
+-\sum_i \frac{\hbar^2}{2m_e}\nabla_i^2
+-\sum_{i,A}\frac{Z_A e^2}{4\pi\varepsilon_0 r_{iA}}
++\sum_{i&lt;j}\frac{e^2}{4\pi\varepsilon_0 r_{ij}}
+$$
+        </div>
+        <div class="eq-desc">
+          Termos: energia cinética dos elétrons, atração elétron-núcleo e repulsão elétron-elétron.
+          O termo $r_{ij}$ acopla os elétrons e torna o problema matematicamente difícil.
+        </div>
+      </div>
 
+      <div class="eq-block gold">
+        <div class="eq-label">Aproximação de Born-Oppenheimer</div>
+        <div>$$\Psi_{\text{total}}(\mathbf{r},\mathbf{R}) \approx \psi_e(\mathbf{r};\mathbf{R})\,\chi_n(\mathbf{R})$$</div>
+        <div class="eq-desc">
+          Como núcleos são muito mais pesados que elétrons, trata-se inicialmente os núcleos como quase fixos.
+          Isso separa parcialmente o problema eletrônico do movimento nuclear.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="callout">
+        <h4>Fala-chave</h4>
+        <p>
+          “Para sistemas com mais de um elétron, a equação de Schrödinger não possui solução analítica exata.
+          Isso nos obriga a construir aproximações.”
+        </p>
+      </div>
+      <div class="fig">
+        <svg viewBox="0 0 760 430" xmlns="http://www.w3.org/2000/svg">
+          <rect width="760" height="430" fill="#07101c"/>
+          <text x="380" y="48" fill="#fff" font-family="Cormorant Garamond,serif" font-size="32" text-anchor="middle" font-weight="700">Crescimento da complexidade</text>
+          <polyline points="80,350 170,330 260,285 350,220 440,145 530,80 630,45" fill="none" stroke="#5090ff" stroke-width="4"/>
+          <line x1="80" y1="350" x2="680" y2="350" stroke="#6c7fa6" stroke-width="1"/>
+          <line x1="80" y1="60" x2="80" y2="350" stroke="#6c7fa6" stroke-width="1"/>
+          <g fill="#f0c040">
+            <circle cx="80" cy="350" r="5"/><circle cx="170" cy="330" r="5"/><circle cx="260" cy="285" r="5"/><circle cx="350" cy="220" r="5"/><circle cx="440" cy="145" r="5"/><circle cx="530" cy="80" r="5"/>
+          </g>
+          <g fill="#6c7fa6" font-family="DM Mono,monospace" font-size="13">
+            <text x="330" y="392">número de elétrons</text>
+            <text x="8" y="210" transform="rotate(-90 18,210)">complexidade</text>
+            <text x="74" y="372"></text><text x="164" y="372">2</text><text x="254" y="372">5</text><text x="340" y="372">10</text><text x="428" y="372">50</text><text x="515" y="372">100</text>
+          </g>
+          <text x="420" y="268" fill="#d7e3f7" font-family="DM Mono,monospace" font-size="14">interação elétron-elétron → acoplamento</text>
+        </svg>
+        <div class="figcap">
+          Fonte conceitual: Szabo & Ostlund, <em>Modern Quantum Chemistry</em>; Levine, <em>Quantum Chemistry</em>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec" id="s-hf">
+  <div class="chip rv">08 — A ponte entre teoria e cálculo</div>
+  <h2 class="sec-title rv">Método de <em>Hartree-Fock</em></h2>
+  <p class="sec-lead rv2">
+    O Hartree-Fock é uma das primeiras grandes aproximações para tratar sistemas multieletrônicos.
+    Ele troca um problema completo de muitos corpos por equações efetivas de uma partícula em campo médio.
+  </p>
+
+  <div class="g2l rv">
+    <div>
+      <div class="eq-block">
+        <div class="eq-label">Equações de Hartree-Fock</div>
+        <div>$$\hat{F}\phi_i = \varepsilon_i \phi_i$$</div>
+        <div class="eq-desc">
+          $\hat{F}$ é o operador de Fock; $\phi_i$ são orbitais moleculares; $\varepsilon_i$ são energias orbitais.
+          Cada elétron se move no campo médio criado pelos núcleos e pelos demais elétrons.
+        </div>
+      </div>
+
+      <div class="eq-block violet">
+        <div class="eq-label">Operador de Fock</div>
+        <div>$$\hat{F}=\hat{h}+\sum_j(\hat{J}_j-\hat{K}_j)$$</div>
+        <div class="eq-desc">
+          $\hat{h}$: parte de um elétron; $\hat{J}$: repulsão coulombiana média; $\hat{K}$: termo de troca,
+          consequência da antissimetria da função de onda para elétrons.
+        </div>
+      </div>
+
+      <div class="eq-block gold">
+        <div class="eq-label">Determinante de Slater</div>
+        <div>
+        $$\Psi(1,2,\ldots,N)=\frac{1}{\sqrt{N!}}
+        \begin{vmatrix}
+        \phi_1(1)&\phi_2(1)&\cdots&\phi_N(1)\\
+        \phi_1(2)&\phi_2(2)&\cdots&\phi_N(2)\\
+        \vdots&\vdots&\ddots&\vdots\\
+        \phi_1(N)&\phi_2(N)&\cdots&\phi_N(N)
+        \end{vmatrix}$$
+        </div>
+        <div class="eq-desc">
+          Garante automaticamente o princípio de Pauli: trocar dois elétrons muda o sinal da função de onda.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="emerge-box">
+        <h4>Ideia física</h4>
+        <p>
+          O método não acompanha cada interação instantânea entre todos os elétrons.
+          Em vez disso, cada elétron sente um potencial médio gerado por todos os outros.
+        </p>
+      </div>
+      <table class="dtable">
+        <tr><th>Aspecto</th><th>Hartree-Fock</th></tr>
+        <tr><td>Vantagem</td><td>Reduz a complexidade do problema</td></tr>
+        <tr><td>Inclui</td><td>Troca eletrônica</td></tr>
+        <tr><td>Não inclui bem</td><td>Correlação eletrônica dinâmica</td></tr>
+        <tr><td>Importância</td><td>Base para química computacional e métodos pós-HF</td></tr>
+      </table>
+      <div class="qblock">
+        <blockquote>“O método de Hartree-Fock transforma um problema de muitos corpos em um conjunto de equações efetivas de uma partícula.”</blockquote>
+        <cite>Frase-chave para apresentação</cite>
+      </div>
+    </div>
+  </div>
+
+  <div class="g2 rv2" style="margin-top:28px">
+    <div class="eq-block green">
+      <div class="eq-label">Ciclo autoconsistente — SCF</div>
+      <div>$$\mathbf{F}(\mathbf{C})\mathbf{C}=\mathbf{S}\mathbf{C}\boldsymbol{\varepsilon}$$</div>
+      <div class="eq-desc">
+        Forma matricial das equações de Roothaan-Hall. A matriz de Fock $\mathbf{F}$ depende dos próprios orbitais
+        que estamos tentando encontrar. Por isso o método é iterativo: chuta-se uma densidade eletrônica,
+        monta-se $\mathbf{F}$, resolve-se a equação e repete-se até convergir.
+      </div>
+    </div>
+    <div class="eq-block teal">
+      <div class="eq-label">Energia Hartree-Fock</div>
+      <div>$$E_{HF}=\sum_i h_{ii}+\frac{1}{2}\sum_{i,j}(J_{ij}-K_{ij})$$</div>
+      <div class="eq-desc">
+        $h_{ii}$ representa a energia de um elétron; $J_{ij}$ é a repulsão coulombiana média;
+        $K_{ij}$ é o termo de troca. A principal limitação é a ausência da correlação eletrônica dinâmica.
+      </div>
+    </div>
+  </div>
+
+  <div class="fn">
+    Fontes: Szabo & Ostlund, <em>Modern Quantum Chemistry</em>; Levine, <em>Quantum Chemistry</em>; Cramer, <em>Essentials of Computational Chemistry</em>.
+  </div>
+</section>
+
+
+<section class="sec" id="s-ligacoes">
+  <div class="chip rv">09 — Da função de onda à molécula</div>
+  <h2 class="sec-title rv">Ligações e <em>estrutura molecular</em></h2>
+  <p class="sec-lead rv2">
+    A estrutura eletrônica explica por que átomos se ligam, por que moléculas têm geometrias específicas
+    e por que materiais apresentam propriedades tão diferentes.
+  </p>
+
+  <div class="g3 rv">
     <div class="card">
-      <h3>Conexão com plasma</h3>
+      <span class="card-tag">Ligação iônica</span>
+      <span class="card-icon">⚡</span>
+      <h3>Transferência de elétrons</h3>
+      <p>Íons de cargas opostas se estabilizam por atração coulombiana. É forte, não direcional e comum em redes cristalinas iônicas.</p>
+      <ul>
+        <li>Energia potencial: $U(r)=-\dfrac{kq_1q_2}{r}$</li>
+        <li>Exemplo: NaCl, MgO</li>
+        <li>Propriedade: alto ponto de fusão</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-tag">Ligação covalente</span>
+      <span class="card-icon">🔗</span>
+      <h3>Compartilhamento de orbitais</h3>
+      <p>Surge da sobreposição de orbitais atômicos e da formação de orbitais moleculares ligantes e antiligantes.</p>
+      <ul>
+        <li>Combinação: $\psi_{MO}=c_A\phi_A+c_B\phi_B$</li>
+        <li>Exemplo: H₂, CH₄, Si</li>
+        <li>Propriedade: direcionalidade</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-tag">Ligação metálica</span>
+      <span class="card-icon">✨</span>
+      <h3>Elétrons deslocalizados</h3>
+      <p>Elétrons de valência ocupam estados coletivos no sólido, formando bandas parcialmente preenchidas.</p>
+      <ul>
+        <li>Condutividade: $\sigma=nq\mu$</li>
+        <li>Exemplo: Cu, Al, Fe</li>
+        <li>Propriedade: condução elétrica</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="g2 rv2" style="margin-top:28px">
+    <div class="eq-block">
+      <div class="eq-label">Potencial interatômico — Lennard-Jones</div>
+      <div>$$U(r)=4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]$$</div>
+      <div class="eq-desc">
+        Modelo simples que combina repulsão de curto alcance e atração de longo alcance. Ajuda a visualizar distância de equilíbrio.
+      </div>
+    </div>
+
+    <div class="fig">
+      <svg viewBox="0 0 760 430" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="430" fill="#07101c"/>
+        <text x="380" y="48" text-anchor="middle" fill="#fff" font-family="Cormorant Garamond,serif" font-size="32" font-weight="700">Potencial interatômico</text>
+        <line x1="90" y1="240" x2="680" y2="240" stroke="#6c7fa6" stroke-width="1"/>
+        <line x1="120" y1="60" x2="120" y2="360" stroke="#6c7fa6" stroke-width="1"/>
+        <path d="M130 80 C155 380,210 340,265 250 C360 95,500 160,650 220" fill="none" stroke="#5090ff" stroke-width="4"/>
+        <circle cx="268" cy="248" r="7" fill="#f0c040"/>
+        <line x1="268" y1="248" x2="268" y2="240" stroke="#f0c040" stroke-width="2"/>
+        <text x="270" y="285" fill="#d7e3f7" font-family="DM Mono,monospace" font-size="13">distância de equilíbrio</text>
+        <text x="400" y="390" fill="#6c7fa6" font-family="DM Mono,monospace" font-size="13">distância r</text>
+        <text x="38" y="210" fill="#6c7fa6" font-family="DM Mono,monospace" font-size="13" transform="rotate(-90 38,210)">energia U(r)</text>
+      </svg>
+      <div class="figcap">
+        Fonte conceitual: Atkins & de Paula; Israelachvili, <em>Intermolecular and Surface Forces</em>.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec" id="s-materiais">
+  <div class="chip rv">10 — Da molécula ao material</div>
+  <h2 class="sec-title rv">Estrutura eletrônica em <em>materiais</em></h2>
+  <p class="sec-lead rv2">
+    Em sólidos, a interação entre muitos átomos transforma níveis discretos em bandas de energia.
+    Essa é a base para entender metais, semicondutores e isolantes.
+  </p>
+
+  <div class="g2 rv">
+    <div>
+      <div class="eq-block">
+        <div class="eq-label">Teorema de Bloch</div>
+        <div>$$\psi_{n\mathbf{k}}(\mathbf{r})=e^{i\mathbf{k}\cdot\mathbf{r}}u_{n\mathbf{k}}(\mathbf{r})$$</div>
+        <div class="eq-desc">
+          Em um potencial periódico, os estados eletrônicos têm forma de onda plana modulada por uma função periódica.
+        </div>
+      </div>
+
+      <div class="eq-block violet">
+        <div class="eq-label">Gap de energia</div>
+        <div>$$E_g=E_c-E_v$$</div>
+        <div class="eq-desc">
+          Diferença entre a banda de condução e a banda de valência. Define se o material é condutor, semicondutor ou isolante.
+        </div>
+      </div>
+
+      <div class="eq-block teal">
+        <div class="eq-label">Condutividade elétrica</div>
+        <div>$$\sigma=nq\mu \qquad \rho=\frac{1}{\sigma}$$</div>
+        <div class="eq-desc">
+          A condutividade depende da concentração de portadores, da carga e da mobilidade. É uma ponte direta entre estrutura eletrônica e engenharia.
+        </div>
+      </div>
+    </div>
+
+    <div class="fig">
+      <svg viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="520" fill="#07101c"/>
+        <text x="380" y="48" text-anchor="middle" fill="#fff" font-family="Cormorant Garamond,serif" font-size="32" font-weight="700">Bandas de energia</text>
+        <g font-family="DM Mono,monospace" font-size="13" fill="#6c7fa6" text-anchor="middle">
+          <text x="160" y="455">Metal</text><text x="380" y="455">Semicondutor</text><text x="600" y="455">Isolante</text>
+        </g>
+        <g>
+          <rect x="90" y="155" width="140" height="86" fill="rgba(80,145,255,.28)" stroke="#5090ff"/>
+          <rect x="90" y="235" width="140" height="86" fill="rgba(80,145,255,.45)" stroke="#5090ff"/>
+          <text x="160" y="205" text-anchor="middle" fill="#d7e3f7" font-family="DM Mono" font-size="12">sobreposição</text>
+        </g>
+        <g>
+          <rect x="310" y="120" width="140" height="70" fill="rgba(157,120,255,.2)" stroke="#9d78ff"/>
+          <rect x="310" y="315" width="140" height="70" fill="rgba(157,120,255,.45)" stroke="#9d78ff"/>
+          <line x1="380" y1="190" x2="380" y2="315" stroke="#f0c040" stroke-width="3" stroke-dasharray="6 6"/>
+          <text x="404" y="258" fill="#f0c040" font-family="DM Mono" font-size="13">Eg</text>
+        </g>
+        <g>
+          <rect x="530" y="90" width="140" height="70" fill="rgba(240,192,64,.14)" stroke="#f0c040"/>
+          <rect x="530" y="345" width="140" height="70" fill="rgba(240,192,64,.35)" stroke="#f0c040"/>
+          <line x1="600" y1="160" x2="600" y2="345" stroke="#f0c040" stroke-width="3" stroke-dasharray="6 6"/>
+          <text x="624" y="258" fill="#f0c040" font-family="DM Mono" font-size="13">Eg grande</text>
+        </g>
+        <text x="380" y="490" text-anchor="middle" fill="#6c7fa6" font-family="DM Mono" font-size="12">Estrutura eletrônica determina propriedades macroscópicas</text>
+      </svg>
+      <div class="figcap">
+        Fonte conceitual: Kittel, <em>Introduction to Solid State Physics</em>; Ashcroft & Mermin, <em>Solid State Physics</em>; HyperPhysics, “Energy Bands”.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="sec" id="s-cronologia">
+  <div class="chip rv">11 — Perspectiva Histórica</div>
+  <h2 class="sec-title rv">Cronologia da <em>Física Quântica</em></h2>
+  <p class="sec-lead rv2">
+    A estrutura da matéria não foi descoberta de uma vez — é o resultado de 130 anos de
+    experimentos, crises e revoluções conceituais. Cada marco desta linha do tempo
+    corresponde a uma seção desta apresentação.
+  </p>
+
+  <!-- TIMELINE INTERATIVA -->
+  <div class="rv" id="timeline-wrap" style="position:relative;margin:8px 0 40px">
+
+    <!-- linha central -->
+    <div style="position:absolute;left:50%;top:0;bottom:0;width:2px;
+      background:linear-gradient(to bottom,var(--blue),var(--violet),var(--teal));
+      transform:translateX(-50%);border-radius:2px"></div>
+
+    <!-- eventos -->
+    <div id="tl-events"></div>
+  </div>
+
+  <div class="g2 rv2" style="margin-top:8px">
+    <div class="callout">
+      <h4>O que esta cronologia mostra</h4>
       <p>
-        Em plasmas, a matéria passa a conter partículas carregadas livres,
-        permitindo fenômenos como ionização, recombinação, excitação eletrônica
-        e formação de espécies reativas.
+        Cada descoberta surgiu de uma <strong style="color:var(--text)">crise experimental</strong> —
+        o corpo negro (1900), o efeito fotoelétrico (1905), o espectro do hidrogênio (1913),
+        a difração de elétrons (1927). A teoria sempre correu atrás do experimento.
+        Nenhum dos fundadores sabia onde chegaria: cada equação foi escrita para resolver
+        <em>um problema específico</em>, não para construir uma teoria geral.
       </p>
     </div>
-
-    <div class="card">
-      <h3>Conexão com telecomunicações</h3>
+    <div class="callout gold">
+      <h4>Onde estamos hoje</h4>
       <p>
-        Propriedades materiais como permissividade, condutividade e perdas dielétricas
-        influenciam diretamente propagação de ondas, antenas, guias e dispositivos eletrônicos.
+        A mecânica quântica está completa desde 1930 — mas <em>aplicá-la</em> à matéria real
+        continua sendo o desafio. DFT (Kohn-Sham, 1965) tornou possível calcular propriedades
+        de materiais reais. Supercondutores de alta temperatura (1986) e materiais topológicos (2000s)
+        mostram que ainda há muito por descobrir mesmo com a teoria estabelecida.
       </p>
     </div>
   </div>
+
+  <!-- tabela de marcos -->
+  <table class="dtable rv3">
+    <thead>
+      <tr>
+        <th>Ano</th>
+        <th>Descoberta / Marco</th>
+        <th>Autor(es)</th>
+        <th>Impacto para esta apresentação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1897</td><td>Descoberta do elétron</td><td>Thomson</td><td>Primeira partícula subatômica — início da física atômica</td></tr>
+      <tr><td>1900</td><td>Quantização da energia ($E=h\nu$)</td><td>Planck</td><td>Nascimento da ideia de quantum — base da seção Dualidade</td></tr>
+      <tr><td>1905</td><td>Efeito fotoelétrico (fóton)</td><td>Einstein</td><td>Partícula de luz — confirma dualidade onda-partícula</td></tr>
+      <tr><td>1911</td><td>Modelo nuclear do átomo</td><td>Rutherford</td><td>Núcleo denso — estrutura para o modelo de Bohr</td></tr>
+      <tr><td>1913</td><td>Modelo atômico quantizado</td><td>Bohr</td><td>Órbitas discretas — seção Hidrogênio</td></tr>
+      <tr><td>1916</td><td>Órbitas elípticas + estrutura fina</td><td>Sommerfeld</td><td>Extensão de Bohr — seção Bohr–Sommerfeld</td></tr>
+      <tr><td>1924</td><td>Dualidade matéria ($\lambda=h/p$)</td><td>De Broglie</td><td>Elétron como onda — motiva Schrödinger</td></tr>
+      <tr><td>1925</td><td>Mecânica matricial</td><td>Heisenberg</td><td>Primeiro formalismo quântico completo</td></tr>
+      <tr><td>1926</td><td>Equação de onda</td><td>Schrödinger</td><td>$\hat{H}\psi = E\psi$ — seção central desta apresentação</td></tr>
+      <tr><td>1927</td><td>Princípio de incerteza</td><td>Heisenberg</td><td>Limite fundamental de medição — seção Schrödinger</td></tr>
+      <tr><td>1928</td><td>Equação relativística do elétron</td><td>Dirac</td><td>Unifica QM + relatividade — prediz spin e antimatéria</td></tr>
+      <tr><td>1930</td><td>Método Hartree-Fock</td><td>Hartree, Fock</td><td>Primeira aproximação sistemática para muitos elétrons</td></tr>
+      <tr><td>1928</td><td>Teoria de bandas de energia</td><td>Bloch</td><td>$\psi_{nk}=e^{ik\cdot r}u_{nk}$ — seção Materiais</td></tr>
+      <tr><td>1965</td><td>Teoria do Funcional da Densidade</td><td>Kohn, Sham</td><td>Torna HF computacionalmente viável para sólidos (Nobel 1998)</td></tr>
+      <tr><td>1986</td><td>Supercondutividade de alta $T_c$</td><td>Bednorz, Müller</td><td>Aplicação direta da estrutura eletrônica — fronteira aberta</td></tr>
+    </tbody>
+  </table>
+
+  <div class="fn rv3">
+    Referências históricas: Jammer, M. <em>The Conceptual Development of Quantum Mechanics</em> (1966) ·
+    Pais, A. <em>Subtle is the Lord</em> (1982) · Mehra, J. & Rechenberg, H. <em>The Historical Development of Quantum Theory</em> (1982–2001).
+  </div>
 </section>
 
-<section id="conclusao">
-  <div class="card">
-    <h2>7. Conclusão</h2>
+<style>
+/* ── Timeline interativa ── */
+.tl-event {
+  display: flex; align-items: flex-start; gap: 0;
+  margin-bottom: 18px; position: relative;
+}
+.tl-event:nth-child(odd)  { flex-direction: row; }
+.tl-event:nth-child(even) { flex-direction: row-reverse; }
+
+.tl-event-content {
+  width: calc(50% - 36px);
+  background: var(--bg2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 18px;
+  transition: border-color .25s, transform .2s;
+  cursor: default;
+}
+.tl-event-content:hover { border-color: var(--line2); transform: translateY(-2px); }
+
+.tl-event:nth-child(odd)  .tl-event-content { margin-right: auto; text-align: right; }
+.tl-event:nth-child(even) .tl-event-content { margin-left: auto; text-align: left; }
+
+.tl-event-dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2.5px solid var(--blue); background: var(--bg);
+  flex-shrink: 0; position: absolute;
+  left: calc(50% - 8px); top: 14px;
+  transition: transform .2s, box-shadow .2s;
+  z-index: 2;
+}
+.tl-event-content:hover ~ .tl-event-dot,
+.tl-event:hover .tl-event-dot {
+  transform: scale(1.35);
+  box-shadow: 0 0 12px var(--blue);
+}
+
+.tl-year {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--blue); margin-bottom: 4px; display: block; letter-spacing: .04em;
+}
+.tl-who  { font-size: 11px; color: var(--muted); font-family: var(--mono); margin-bottom: 4px; }
+.tl-what { font-size: 13.5px; color: var(--text); font-weight: 500; line-height: 1.4; }
+.tl-note { font-size: 12px; color: var(--muted); margin-top: 5px; line-height: 1.55; }
+
+/* dot colors by era */
+.era-old  { border-color: var(--gold); }
+.era-mid  { border-color: var(--blue); }
+.era-new  { border-color: var(--violet); }
+.era-mod  { border-color: var(--teal); }
+</style>
+
+<script>
+(function(){
+  const events = [
+    {year:1897, who:"Thomson",          what:"Descoberta do elétron",                   note:"1ª partícula subatômica",                    era:"old"},
+    {year:1900, who:"Planck",           what:"E = hν — quantização da energia",         note:"Nascimento do quantum",                      era:"old"},
+    {year:1905, who:"Einstein",         what:"Efeito fotoelétrico — o fóton",           note:"Dualidade onda-partícula confirmada",         era:"old"},
+    {year:1913, who:"Bohr",             what:"Modelo atômico com órbitas discretas",    note:"1º modelo quântico do átomo",                era:"old"},
+    {year:1916, who:"Sommerfeld",       what:"Órbitas elípticas + estrutura fina",      note:"Extensão relativística de Bohr",             era:"old"},
+    {year:1924, who:"De Broglie",       what:"λ = h/p — onda de matéria",              note:"Motiva a equação de Schrödinger",            era:"mid"},
+    {year:1925, who:"Heisenberg",       what:"Mecânica matricial",                      note:"1º formalismo quântico completo",            era:"mid"},
+    {year:1926, who:"Schrödinger",      what:"Ĥψ = Eψ — equação de onda",             note:"Base de toda esta apresentação",             era:"mid"},
+    {year:1927, who:"Heisenberg",       what:"Princípio de incerteza Δx·Δp ≥ ℏ/2",    note:"Limite fundamental da natureza",             era:"mid"},
+    {year:1928, who:"Bloch",            what:"Teorema de Bloch — teoria de bandas",     note:"Base dos semicondutores",                    era:"mid"},
+    {year:1930, who:"Hartree & Fock",   what:"Método Hartree-Fock",                     note:"1ª aproximação sistemática N-elétrons",      era:"new"},
+    {year:1964, who:"Kohn & Sham",      what:"DFT — Teoria do Funcional da Densidade", note:"Nobel 1998 · design de materiais moderno",   era:"mod"},
+    {year:1986, who:"Bednorz & Müller", what:"Supercondutividade de alta Tc",           note:"Nobel 1987 · fronteira ainda aberta",        era:"mod"},
+  ];
+
+  const wrap = document.getElementById('tl-events');
+  if(!wrap) return;
+
+  const colorMap = {old:'var(--gold)', mid:'var(--blue)', new:'var(--violet)', mod:'var(--teal)'};
+
+  events.forEach((e, i) => {
+    const div = document.createElement('div');
+    div.className = 'tl-event';
+    const side = i % 2 === 0 ? 'odd' : 'even';
+    div.innerHTML = `
+      <div class="tl-event-content">
+        <span class="tl-year">${e.year}</span>
+        <div class="tl-who">${e.who}</div>
+        <div class="tl-what">${e.what}</div>
+        <div class="tl-note">${e.note}</div>
+      </div>
+      <div class="tl-event-dot" style="border-color:${colorMap[e.era]};box-shadow:0 0 6px ${colorMap[e.era]}44"></div>
+    `;
+    wrap.appendChild(div);
+  });
+})();
+</script>
+
+<section class="sec" id="s-final">
+  <div class="chip rv">12 — Síntese final</div>
+  <h2 class="sec-title rv">Do formalismo à <em>matéria real</em></h2>
+  <p class="sec-lead rv2">
+    A apresentação segue um fluxo de pesquisa: começa na equação fundamental, mostra onde ela funciona,
+    identifica o limite em sistemas reais, introduz aproximações e termina nas propriedades observáveis.
+  </p>
+
+  <div class="g2 rv">
+    <div>
+      <div class="emerge-box">
+        <h4>Fluxo estratégico do seminário</h4>
+        <p style="font-family:var(--mono);color:#d7e3f7">
+          Schrödinger → Hidrogênio → Muitos elétrons → Aproximações → Hartree-Fock → Ligações → Materiais
+        </p>
+      </div>
+      <table class="dtable">
+        <tr><th>Etapa</th><th>Ideia</th><th>Equação-chave</th></tr>
+        <tr><td>Microscópica</td><td>Estado quântico</td><td>$\hat{H}\psi=E\psi$</td></tr>
+        <tr><td>Atômica</td><td>Níveis de energia</td><td>$E_n=-13,6/n^2$</td></tr>
+        <tr><td>Real</td><td>Interação elétron-elétron</td><td>$\sum_{i&lt;j}1/r_{ij}$</td></tr>
+        <tr><td>Aproximação</td><td>Campo médio</td><td>$\hat{F}\phi_i=\varepsilon_i\phi_i$</td></tr>
+        <tr><td>Material</td><td>Bandas</td><td>$E_g=E_c-E_v$</td></tr>
+      </table>
+    </div>
+
+    <div>
+      <div class="qblock">
+        <blockquote>“A estrutura da matéria começa com uma teoria fundamental, mas só se conecta ao mundo real por meio de modelos e aproximações.”</blockquote>
+        <cite>Fechamento recomendado</cite>
+      </div>
+      <div class="callout gold">
+        <h4></h4>
+        <p>
+          A matéria não é entendida apenas como conjunto de partículas, mas como organização eletrônica,
+          interação entre constituintes e propriedades emergentes que aparecem em átomos, moléculas e materiais.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-card rv2">
+    <h3>A estrutura da matéria é a ponte entre teoria quântica e propriedades observáveis.</h3>
     <p>
-      Compreender a estrutura da matéria significa entender como propriedades observáveis
-      surgem de interações microscópicas.
-    </p>
-
-    <ul>
-      <li>A matéria possui organização em múltiplas escalas.</li>
-      <li>A mecânica quântica explica estados eletrônicos e níveis de energia.</li>
-      <li>As ligações químicas determinam estrutura e propriedades.</li>
-      <li>As bandas de energia explicam o comportamento elétrico dos materiais.</li>
-      <li>Aplicações vão de semicondutores a plasma e telecomunicações.</li>
-    </ul>
-
-    <h3>Mensagem final</h3>
-    <p class="highlight">
-      Quem entende a estrutura da matéria entende a base física da engenharia moderna.
+      O desafio científico não é apenas escrever a equação fundamental, mas construir aproximações capazes
+      de explicar sistemas reais com precisão crescente.
     </p>
   </div>
 </section>
+
+
+<section class="sec" id="s-ref">
+  <div class="chip rv">Referências</div>
+  <h2 class="sec-title rv">Fontes <em>reais</em></h2>
+  <p class="sec-lead rv2">Referências usadas para fundamentar o conteúdo, equações e figuras conceituais.</p>
+
+  <ul class="kl source-list rv">
+    <li><strong>Schrödinger, E.</strong> Quantisierung als Eigenwertproblem. <em>Annalen der Physik</em>, 1926.</li>
+    <li><strong>Griffiths, D. J.; Schroeter, D. F.</strong> <em>Introduction to Quantum Mechanics</em>, 3ª ed., Cambridge University Press, 2018.</li>
+    <li><strong>Atkins, P.; de Paula, J.</strong> <em>Physical Chemistry</em>, Oxford University Press.</li>
+    <li><strong>Szabo, A.; Ostlund, N. S.</strong> <em>Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory</em>, Dover.</li>
+    <li><strong>Levine, I. N.</strong> <em>Quantum Chemistry</em>, Pearson.</li>
+    <li><strong>Kittel, C.</strong> <em>Introduction to Solid State Physics</em>, Wiley.</li>
+    <li><strong>Ashcroft, N. W.; Mermin, N. D.</strong> <em>Solid State Physics</em>, Cengage.</li>
+    <li><strong>NIST Atomic Spectra Database</strong> e <strong>NIST CODATA</strong> — constantes físicas e espectros atômicos.</li>
+    <li><strong>IUPAC Gold Book</strong> — definições de orbital atômico, molécula, ligação química e termos físico-químicos.</li>
+    <li><strong>Particle Data Group</strong> — <em>Review of Particle Physics</em>, para constituintes fundamentais da matéria.</li>
+  </ul>
+</section>
+
 
 <footer>
-  Página HTML preparada para apresentação acadêmica — Estrutura da Matéria | Eduardo Glicerio
+  <p>Estrutura da Matéria · Seminário de Aula · <span>Eduardo Glicerio</span> · UFES</p>
 </footer>
 
+<script>
+const TOTAL_SEC = 45 * 60;
+let remaining = TOTAL_SEC;
+let running = false;
+let iv = null;
+const digital = document.getElementById('clk-digital');
+const btn = document.getElementById('btn-toggle');
+const canvas = document.getElementById('clk-canvas');
+const ctx = canvas.getContext('2d');
+
+function fmtTime(s){
+  return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+}
+function drawClock(){
+  const w=canvas.width,h=canvas.height,cx=w/2,cy=h/2,r=20;
+  ctx.clearRect(0,0,w,h);
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,r,0,Math.PI*2);
+  ctx.strokeStyle='rgba(80,145,255,.35)';
+  ctx.lineWidth=2;
+  ctx.stroke();
+
+  for(let i=0;i<12;i++){
+    const a=-Math.PI/2+i*Math.PI/6;
+    const r1=r-3, r2=r-1;
+    ctx.beginPath();
+    ctx.moveTo(cx+Math.cos(a)*r1, cy+Math.sin(a)*r1);
+    ctx.lineTo(cx+Math.cos(a)*r2, cy+Math.sin(a)*r2);
+    ctx.strokeStyle='rgba(215,227,247,.55)';
+    ctx.lineWidth=(i%3===0)?1.6:1;
+    ctx.stroke();
+  }
+
+  const pct=(TOTAL_SEC-remaining)/TOTAL_SEC;
+  ctx.beginPath();
+  ctx.arc(cx,cy,r-5,-Math.PI/2,-Math.PI/2+Math.PI*2*pct);
+  ctx.strokeStyle=pct>.85?'#ff6363':pct>.65?'#f0c040':'#5090ff';
+  ctx.lineWidth=3;
+  ctx.stroke();
+
+  const minuteAngle=-Math.PI/2+Math.PI*2*pct;
+  ctx.beginPath();
+  ctx.moveTo(cx,cy);
+  ctx.lineTo(cx+Math.cos(minuteAngle)*(r-8), cy+Math.sin(minuteAngle)*(r-8));
+  ctx.strokeStyle='#f0c040';
+  ctx.lineWidth=2.2;
+  ctx.lineCap='round';
+  ctx.stroke();
+
+  const elapsed=TOTAL_SEC-remaining;
+  const secAngle=-Math.PI/2+Math.PI*2*((elapsed%60)/60);
+  ctx.beginPath();
+  ctx.moveTo(cx,cy);
+  ctx.lineTo(cx+Math.cos(secAngle)*(r-4), cy+Math.sin(secAngle)*(r-4));
+  ctx.strokeStyle='#2dcfbf';
+  ctx.lineWidth=1.2;
+  ctx.lineCap='round';
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,2.6,0,Math.PI*2);
+  ctx.fillStyle='#f0c040';
+  ctx.fill();
+}
+function tick(){
+  if(remaining>0) remaining--; else {clearInterval(iv);running=false;btn.textContent='▶ Iniciar';btn.classList.remove('running');}
+  digital.textContent=fmtTime(remaining);
+  drawClock();
+}
+function toggleTimer(){
+  if(running){clearInterval(iv);running=false;btn.textContent='▶ Retomar';btn.classList.remove('running');}
+  else{running=true;iv=setInterval(tick,1000);btn.textContent='⏸ Pausar';btn.classList.add('running');}
+}
+function resetTimer(){
+  clearInterval(iv);running=false;remaining=TOTAL_SEC;digital.textContent=fmtTime(remaining);drawClock();btn.textContent='▶ Iniciar';btn.classList.remove('running');
+}
+digital.textContent=fmtTime(remaining);drawClock();
+
+const slides = Array.from(document.querySelectorAll('.sec'));
+const links = Array.from(document.querySelectorAll('#chapnav a'));
+const counter = document.getElementById('slide-ctr');
+
+function currentSlideIndex(){
+  let best=0;
+  slides.forEach((s,i)=>{ if(window.scrollY >= s.offsetTop - 180) best=i; });
+  return best;
+}
+function updateNav(){
+  const idx=currentSlideIndex();
+  counter.textContent=(idx+1)+' / '+slides.length;
+  links.forEach((a,i)=>a.classList.toggle('act', i===idx));
+}
+function goSlide(dir){
+  const idx=Math.max(0,Math.min(slides.length-1,currentSlideIndex()+dir));
+  slides[idx].scrollIntoView({behavior:'smooth'});
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' ') goSlide(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp') goSlide(-1);
+});
+updateNav();
+
+const rvEls=document.querySelectorAll('.rv,.rv2,.rv3');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:.08});
+rvEls.forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
